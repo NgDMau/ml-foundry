@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  maund-env:
+    image: maund-env-image
+    container_name: maund-env-test
+
+    restart: unless-stopped      # 1. For auto-restart
+    shm_size: '16g'              # 2. For the 16GB shared memory size, seems enough for many AI/ML data processing tasks
+
+    volumes:
+      # 3. Mount my directories
+      # /your/dir/on/host:/your/dir/in/container # For example:
+      - /mnt/data/nict/maund:/app
+      - /mnt/data/nict/.cache:/.cache
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            # 4. To use all available GPUs
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
+# NOTE: In some system, you might use "docker-compose" instead of "docker compose"
+
+# Now you can use the Docker container for your development work.
+# To start, run: "docker compose up -d"
+# To access the container, run: "docker exec -it maund-env-test /bin/bash"
+# To temporarily quit the container, run: "Ctrl + P + Q"
+# To temporarily stop the container, run: "docker compose stop"
+
+# To stop with data will be lost: "docker compose down"

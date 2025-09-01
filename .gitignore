@@ -67,7 +67,7 @@ venv.bak/
 # Conda
 *.conda
 *.env
-*.yml
+
 *.yaml
 conda-meta/
 *.lock
