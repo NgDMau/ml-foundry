@@ -73,10 +73,9 @@ conda-meta/
 *.lock
 
 # Docker
-**/docker-compose*.yml
-**/Dockerfile*
+
 docker-compose.override.yml
-docker-compose.yml
+
 .docker/
 docker/
 *.log
