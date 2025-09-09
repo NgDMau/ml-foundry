@@ -21,7 +21,7 @@ docker build . -t maund-env-image
 
 -----
 
-### Step 2: Running the Container
+### (Being fixed now, there could be issue to follow this command) Step 2: Running the Container
 
 Once the image is built, you can run it as a container. If your project uses a `docker-compose.yml` file, this is the most efficient way to manage and run your services.
 
