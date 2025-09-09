@@ -1,4 +1,9 @@
-FROM nvidia/cuda:12.6.2-cudnn-runtime-ubuntu22.04
+## For inference and light training
+# FROM nvidia/cuda:12.6.2-cudnn-runtime-ubuntu22.04 
+
+## For heavy training with DeepSpeed and FSDP"
+FROM nvidia/cuda:12.6.2-cudnn-devel-ubuntu22.04
+
 
 # Set default shell to bash
 SHELL ["/bin/bash", "-c"]
