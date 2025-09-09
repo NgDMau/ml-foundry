@@ -15,12 +15,17 @@ docker build -t your-image-tag .
 
 After the image is successfully built, use the following command to start an interactive container from it:
 ```bash
-docker run --rm -it --gpus all -v /path/to/your/project:/app your-image-tag bash 
+docker run -it --gpus all -v /path/to/your/project:/app your-image-tag bash 
+```
+or
+```bash
+docker run -d --name your-container-name --gpus all --shm-size=64g --restart unless-stopped -v /path/to/your/project:/app your-image-tag
 ```
 The `-v` flag mounts a volume, which links your local project folder (the host path) to a folder inside the container.
 - `/path/to/your/project`: The source directory on your machine.
 - `/app`: The destination directory inside the container.
 This means any files in your project folder are directly accessible at `/app` inside the container. This method is ideal for working with source code or large datasets, as it avoids the need to copy them into the image itself.
+
 
 ## Use the container
 After starting container and getting accessed inside successfully, you can just do your normal development/experiment work without affecting system softwares/configurations.
